@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./dist/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <button id="openPopup" class="button-icon">
+        <img src="./dist/images/star.png" alt="star" />
+      </button>
+      <button id="my-watch-list-button" class="button-icon">
+        <img src="./dist/images/watch.png" alt="watch" />
+      </button>
+    </header>
+    <div class="container">
+      <div class="search-box">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="movie-search"
+            placeholder="Bulmak istediğiniz filmin adını yazınız"
+          />
+          <button type="submit" id="search-button">
+            <svg
+              id="search-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-search"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+
+            <svg
+              id="search-arrow"
+              width="50"
+              height="30"
+              viewBox="0 0 50 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 15L40 15L30 5L40 15L30 25L40 15Z"
+                fill="#3192fc"
+                stroke="#3192fc"
+                stroke-width="3"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div id="search-results"></div>
+      </div>
+      <div class="popup" id="myPopup">
+        <h2>Favorilerim</h2>
+
+        <div id="favorites-list"></div>
+
+        <button id="closePopup" class="button-icon">
+          <img src="./dist/images/close-button.png" />
+        </button>
+      </div>
+      <div id="watch-list-popup" class="watch-list-popup">
+        <h2>İzleme Listem</h2>
+        <div id="watch-list-content"></div>
+        <button id="close-watch-list" class="button-icon">
+          <img src="./dist/images/close-button.png" />
+        </button>
+      </div>
+      
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script type="module" src="./dist/js/app.js"></script>
+  </body>
+</html>
