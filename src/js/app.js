@@ -1,5 +1,4 @@
-////////////////////////////////////////////////
-const apiKey = "a939f0da";
+ const apiKey = "a939f0da";
 
 // Shared Module
 const SharedModule = (function () {
@@ -106,7 +105,7 @@ const FavoritesModule = (function () {
     setTimeout(() => {
       $("#myPopup").show();
     }, 300);
-    FavoritesModule.renderFavorites(); // Pop-up açıldığında favorileri render et
+    FavoritesModule.renderFavorites();  
   });
 
   $("#closePopup").on("click", function () {
@@ -123,7 +122,7 @@ const FavoritesModule = (function () {
     setTimeout(() => {
       $("#watch-list-popup").show();
     }, 300);
-    FavoritesModule.renderFavorites(); // Pop-up açıldığında favorileri render et
+    FavoritesModule.renderFavorites();  
   });
 
   $("#close-watch-list").on("click", function () {
@@ -141,12 +140,10 @@ const FavoritesModule = (function () {
 const MoviesModule = (function (SharedModule, FavoritesModule) {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   function highlightQuery(text, query) {
-    // Escape special characters in the query to use in the regex
-    const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+     const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
     const regex = new RegExp(`(${escapedQuery})`, "gi");
 
-    // Replace the matched query with a bold version
-    return text.replace(regex, "<strong>$1</strong>");
+     return text.replace(regex, "<strong>$1</strong>");
   }
   function renderMovies(movies, sliceElement) {
     const loadButton = `
@@ -284,32 +281,27 @@ const MoviesModule = (function (SharedModule, FavoritesModule) {
   return {
     init: function () {
       bindEvents();
-      FavoritesModule.renderFavorites(); // Sayfa yüklendiğinde favorileri render et
+      FavoritesModule.renderFavorites();  
     },
   };
 })(SharedModule, FavoritesModule);
 
 const CalendarModule = (function (SharedModule) {
   let currentStartDate = new Date();
-  let updateInterval = 7; // Varsayılan olarak 7 günde bir güncelleme
-
-  // Ekran boyutunu kontrol eden fonksiyon
-  function checkScreenSize() {
-    if (window.innerWidth <= 768) { // Mobil boyut için örnek bir eşik değeri
+  let updateInterval = 7;  
+   function checkScreenSize() {
+    if (window.innerWidth <= 768) {  
       updateInterval = 3; 
     } else {
       updateInterval = 7; 
     }
   }
 
-  // Sayfa yüklendiğinde ekran boyutunu kontrol et
-  checkScreenSize();
-console.log(updateInterval)
-  // Ekran yeniden boyutlandırıldığında ekran boyutunu tekrar kontrol et
+   checkScreenSize();
+ 
   window.addEventListener('resize', checkScreenSize);
 
-  // Create calendar HTML for a 7-day period
-  function createCalendarHtml(date) {
+   function createCalendarHtml(date) {
     let daysHtml = "";
     const monthNames = [
       "January",
@@ -366,8 +358,7 @@ console.log(updateInterval)
         `;
   }
 
-  // Open the calendar popup with movie data
-  function openCalendarPopup(movieData) {
+   function openCalendarPopup(movieData) {
     currentStartDate = new Date();
     $(".calendar-popup").remove();
     renderCalendarPopup(movieData);
@@ -390,8 +381,7 @@ console.log(updateInterval)
     });
   }
 
-  // Load movies for the selected date
-  function loadMoviesForSelectedDate(date) {
+   function loadMoviesForSelectedDate(date) {
     const selectedDate = date.toDateString();
     const watchLaterList = JSON.parse(localStorage.getItem("watchLater")) || [];
     console.log(watchLaterList);
@@ -468,8 +458,7 @@ console.log(updateInterval)
     $("#movie-list").html(movieListHtml || "<p class='no-records'>İzleme Listenizde Kayıt Yok</p>");
   }
 
-  // Add movie to watch later list in localStorage
-  function addMovieToCalendar(movieData, date) {
+   function addMovieToCalendar(movieData, date) {
     const watchLaterList = JSON.parse(localStorage.getItem("watchLater")) || [];
 
     watchLaterList.push({ ...movieData, date });
@@ -479,8 +468,7 @@ console.log(updateInterval)
     loadMoviesForSelectedDate(new Date(date));
   }
 
-  // Remove movie from watch later list in localStorage
-  function removeMovieFromCalendar(movieId, date) {
+   function removeMovieFromCalendar(movieId, date) {
     let watchLaterList = JSON.parse(localStorage.getItem("watchLater")) || [];
     watchLaterList = watchLaterList.filter(
       (movie) => !(movie.movieId === movieId && movie.date === date)
@@ -489,8 +477,7 @@ console.log(updateInterval)
     loadMoviesForSelectedDate(new Date(date));
   }
 
-  // Bind event handlers
-  function bindEvents() {
+   function bindEvents() {
     $(document).on("click", ".watch-later", function () {
       const movieData = {
         movieId: $(this).data("id"),
@@ -503,7 +490,7 @@ console.log(updateInterval)
     });
 
     $(document).on("click", "#prev-week", function () {
-      currentStartDate.setDate(currentStartDate.getDate() - updateInterval); // updateInterval kullan
+      currentStartDate.setDate(currentStartDate.getDate() - updateInterval);  
       const movieData = $("#add-to-calendar").data("movieData");
       $(".calendar-popup").remove();
       renderCalendarPopup(movieData);
@@ -511,7 +498,7 @@ console.log(updateInterval)
 
     $(document).on("click", "#next-week", function () {
       console.log(updateInterval);
-      currentStartDate.setDate(currentStartDate.getDate() + updateInterval); // updateInterval kullan
+      currentStartDate.setDate(currentStartDate.getDate() + updateInterval);  
       const movieData = $("#add-to-calendar").data("movieData");
       $(".calendar-popup").remove();
       renderCalendarPopup(movieData);
@@ -533,19 +520,16 @@ console.log(updateInterval)
       $(".calendar-popup").remove();
     });
 
-    // My Watch List popup'ını açan button için event handler
-    $(document).on("click", "#my-watch-list-button", function () {
+     $(document).on("click", "#my-watch-list-button", function () {
       openWatchListPopup();
     });
 
-    // Popup'ı kapatan düğme için event handler
-    $(document).on("click", "#close-watch-list", function () {
+     $(document).on("click", "#close-watch-list", function () {
       $(".watch-list-popup").hide();
     });
   }
 
-  // My Watch List popup'ını göster
-  function openWatchListPopup() {
+   function openWatchListPopup() {
     const watchLaterList = JSON.parse(localStorage.getItem("watchLater")) || [];
 
     const movieListHtml = watchLaterList

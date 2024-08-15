@@ -82,8 +82,8 @@ header{
 
 .popup,
 .watch-list-popup{
-  opacity: 0; /* Başlangıçta popup'ı saydam yap */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Geçiş efektleri ekle */
+  opacity: 0;  
+  transition: opacity 0.3s ease, transform 0.3s ease; 
   position: absolute;
   z-index: 15;
   width: 80vw;
@@ -110,9 +110,9 @@ header{
 .calendar {
   display: flex;
   align-items: center;
-  width: fit-content; /* Takvimin içeriğine göre genişlik ayarlaması */
-  margin: 20px auto; /* Ortalama */
-  overflow: hidden; /* Taşan içeriği gizle */
+  width: fit-content;  
+  margin: 20px auto;  
+  overflow: hidden;  
   padding: 20px 0;
   position: relative;
 
@@ -120,7 +120,7 @@ header{
 
 .days {
   display: flex;
-  transition: transform 1s ease-in-out; /* Geçiş efekti */
+  transition: transform 1s ease-in-out; 
 
 }
 
@@ -138,7 +138,7 @@ header{
 }
 
 .day.selected {
-  background-color: var(--star-color); /* Seçili günü mavi yapar */
+  background-color: var(--star-color);  
   color: var(--element-background-color);
 }
 
@@ -279,10 +279,10 @@ margin-bottom: 1em;
 }
 .movie-card .description p {
   line-height: 1.4;
-  height: 66px; /* Kapsayıcının yüksekliğini belirleyin */
+  height: 66px; 
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Görüntülenecek maksimum satır sayısı */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
@@ -326,16 +326,15 @@ margin-bottom: 1em;
   color: var(--font-gray-light);
 }
 .search-box::after {
-  /* ::before yerine ::after kullanıyoruz */
-  content: "";
+   content: "";
   position: absolute;
-  top: 50px; /* Üçgeni yukarı taşı */
+  top: 50px;  
   left: 20px;
   width: 0;
   height: 0;
-  border-left: 30px solid transparent; /* Sol kenar şeffaf */
-  border-right: 30px solid transparent; /* Sağ kenar şeffaf */
-  border-bottom: 30px solid transparent; /* Alt kenarı mavi yap */
+  border-left: 30px solid transparent; 
+  border-right: 30px solid transparent;  
+  border-bottom: 30px solid transparent;  
   z-index: 5;
 }
 .language,
@@ -369,7 +368,7 @@ margin-bottom: 1em;
 }
 #seperator {
   border-bottom: 1px solid var(--border-color);
-  grid-column: 1 / -1; /* Separator'ü tüm sütunlara yay */
+  grid-column: 1 / -1;  
 }
 #count-movie {
   width: 80%;
@@ -399,9 +398,9 @@ margin-bottom: 1em;
   font-weight: bold;
 }
 hr {
-  border: none; /* Varsayılan kenarlığı kaldır */
-  border-top: 3px solid var(--star-color); /* Üst kenarlığa ince bir çizgi ekle */
-  margin: 20px 0; /* Çizginin üstünde ve altında boşluk bırak */
+  border: none;  
+  border-top: 3px solid var(--star-color);  
+  margin: 20px 0;  
 }
 .button-icon {
   position: absolute;
